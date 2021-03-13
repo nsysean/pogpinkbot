@@ -1,0 +1,44 @@
+<html>
+<body>
+    <p id="demo"></p>
+    <p id="demoo"></p>
+    <p id="demooo"></p>
+    <p id="demoooo"></p>
+    <p id="demooooo"></p>
+
+
+
+
+
+<script>
+    //let find = data.find(el => el.cmd === "test");div.innerHTML = 'Name: ' + find.cmd + '\n' + find.alias + '\n' + find.des + '\n' + find.cat;
+if(window.location.href.startsWith(window.location.protocol + "/\/" + window.location.hostname + window.location.pathname +("?search=")))
+{window.location.replace(window.location.href.replace("test1.html", "test.html"));}
+const args = window.location.href.replace(window.location.protocol + "/\/" + window.location.hostname + ":" + window.location.port + window.location.pathname + "?search=", "").replace(/\+/g, " ").replace("&Search=Submit", '')
+document.getElementById("demo").innerHTML = "Results for command: " + "\"" + args + "\"";
+fetch('people.json')
+           .then(function (response) {
+               return response.json();
+           })
+           .then(function (data) {
+               appendData(data);
+           })
+           .catch(function (err) {
+               console.log('error: ' + err);
+           });
+       function appendData(data) {
+           var mainContainer = document.getElementById("myData");
+           for (var i = 0; i < data.length; i++) {
+               var div = document.createElement("div");
+               let find = data.find(el => el.cmd === args)
+               div.innerHTML = 'Name: ' + data[i].firstName + ' ' + data[i].lastName;
+               document.getElementById("demoo").innerHTML ="Name:"+find.cmd;
+               document.getElementById("demooo").innerHTML ="Description: " + find.des
+               document.getElementById("demoooo").innerHTML ="Aliases: " + find.alias
+               document.getElementById("demooooo").innerHTML ="Category: " + find.category
+
+           }
+       }
+</script>
+</body>
+</html>
