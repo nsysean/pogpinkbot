@@ -21,6 +21,6 @@ module.exports = {
     message.channel.send('Restarting...')
     
     .then(message => client.destroy())
-    .then(() => client.login("ODAxMjc5ODc3NTk1NjYwMjk5.YAeYCQ.9J58bnLpMM_zoPkoxrGd3JllAR0"));
+    .then(() => client.login(""));
     message.channel.send('Restarted')
 		}}
